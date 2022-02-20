@@ -9,3 +9,12 @@ regexp="^(?<recieve_time>\w+\s+\d+\s+\d+\:\d+\:\d+)\s+(?<target_host_name>\S+)\s
 #Feb 16 12:40:36 SERVER_NAME postfix/smtp[2609]: 846BD100005: to=<user@test.com>, relay=1.1.1.1[1.1.1.1]:25, delay=0.07, delays=0.07/0/0.01/0, dsn=2.1.5, status=deliverable (250 1.1.1 Recipient OK)
 
 regexp="^(?<recieve_time>\w+\s+\d+\s+\d+\:\d+\:\d+)\s+(?<target_host_name>\S+)\s+(?<field_name1>[^\:]+)\:\s+(?<field_name2>[^\:]+)\:\s+(?<key_value_section>.*)$"
+
+
+## sample log 
+Feb 14 14:28:51 ServerName KSMG: not clean: message-id="<20220214100003.98FC40A9959FC217@test.test>": relay-ip="1.1.1.1": action="Attachment(s) deleted, Put in backup": backup-reason="AntiSpam": rules="4": size=501829: mail-from="test@test.test": rcpt-to="test@test.test": kt-status="NotScanned, disabled by settings", av-status="Infected", ap-status="Clean", as-status="Spam", as-method="multiple", ma-status="NotScanned, policy", cf-status="NotScanned, disabled by settings": part "Scanned_001993193819_2022-02-14_SKMBT.r01", action="Deleted", av-status="Infected", threats="UDS:DangerousObject.Multi.Generic"
+
+grok:
+%{MONTH} %{MONTHDAY} %{TIME} %{WORD:hostname} KSMG: %{WORD:clean} %{WORD:notuse}\: message-id="<%{GREEDYDATA:messageid}\>": relay-ip="%{IP:relayip}": action="%{GREEDYDATA:action}, %{GREEDYDATA:action}": backup-reason="%{GREEDYDATA:backupreason}": rules="%{GREEDYDATA:rules}": size=%{NUMBER:size}: mail-from="%{GREEDYDATA:mailfrom}": rcpt-to="%{GREEDYDATA:rcptto}": kt-status="%{GREEDYDATA:ktstatus}, %{GREEDYDATA:ktstatus}", av-status="%{GREEDYDATA:avstatus}", ap-status="%{GREEDYDATA:apstatus}", as-status="%{GREEDYDATA:asstatus}", as-method="%{GREEDYDATA:asmethod}", ma-status="%{GREEDYDATA:mastatus}, %{GREEDYDATA:mastatus}", cf-status="%{GREEDYDATA:cfstatus}, %{GREEDYDATA:cfstatus}": part "%{GREEDYDATA:part}", action="%{GREEDYDATA:action}", av-status="%{GREEDYDATA:avstatus}", threats="%{GREEDYDATA:threats}"
+
+
