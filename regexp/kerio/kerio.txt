@@ -1,0 +1,5 @@
+# Feb 23 14:51:11 HOST_NAME KerioControl  1.1.1.1 - username [23/Feb/2022:14:53:21 +0300] "CONNECT https://1.1.1.1:443/ HTTP/1.0" 200 3008 
+
+##regexp
+
+^(?<receive_time>\w+\s+\d+\s+\d+\:\d+\:\d+)\s+(?<sender_host>\S+)\s+\S+\s+(?P<src_ip>\d+.\d+.\d+.\d+)\s+\S+\s+(?P<username>\S+)\s+\[(?<http_request_datetime>\d+\/\w+\/\d+\:\d+\:\d+\:\d+)\s+(?<utc_time_difference>[+-]\d+)\]\s+\"(?<http_method>\S+)\s+(?<url>\S+)\s+(?<http_version>[^\"]+)\"\s+(?<http_response_code>\d+)\s+(?<transferred_file_size>\d+)\s+$
