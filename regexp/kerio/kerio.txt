@@ -1,5 +1,17 @@
-# Feb 23 14:51:11 HOST_NAME KerioControl  1.1.1.1 - username [23/Feb/2022:14:53:21 +0300] "CONNECT https://1.1.1.1:443/ HTTP/1.0" 200 3008 
+# Feb 23 14:51:11 HOST_NAME KerioControl  1.1.1.1 - username [23/Feb/2022:14:53:21 +0300] "CONNECT https://1.1.1.1:443/ HTTP/1.0" 200 3008 +3
 
 ##regexp
 
-^(?<receive_time>\w+\s+\d+\s+\d+\:\d+\:\d+)\s+(?<sender_host>\S+)\s+\S+\s+(?P<src_ip>\d+.\d+.\d+.\d+)\s+\S+\s+(?P<username>\S+)\s+\[(?<http_request_datetime>\d+\/\w+\/\d+\:\d+\:\d+\:\d+)\s+(?<utc_time_difference>[+-]\d+)\]\s+\"(?<http_method>\S+)\s+(?<url>\S+)\s+(?<http_version>[^\"]+)\"\s+(?<http_response_code>\d+)\s+(?<transferred_file_size>\d+)\s+$
+^(?<receive_time>\w+\s+\d+\s+\d+\:\d+\:\d+)\s+(?<sender_host>\S+)\s+\S+\s+(?P<src_ip>\d+.\d+.\d+.\d+)\s+\S+\s+(?P<username>\S+)\s+\[(?<http_request_datetime>\d+\/\w+\/\d+\:\d+\:\d+\:\d+)\s+(?<utc_time_difference>[+-]\d+)\]\s+\"(?<http_method>\S+)\s+(?<url>\S+)\s+(?<http_version>[^\"]+)\"\s+(?<http_response_code>\d+)\s+(?<transferred_file_size>\d+)\s+(?<http_request_count>.*)?(\s+)?$
+
+
+## Feb 25 08:39:08 host_namne KerioControl  [ID] 52750806 [Rule] Firewall traffic [Service] HTTP Proxy [User] username [Connection] TCP hostname (1.1.1.1):38849 -> 1.2.2.1:3128 [Iface] WAN [Duration] 37 sec [Bytes] 2200/3618/5818 [Packets] 11/10/21 
+
+##regexp
+
+^(?<date>\w{3}\s+\d{1,2}\s+\d{2}\:\d{2}\:\d{2})\s+(?<host>[^\s]*)\s+KerioControl.*?\[ID\]\s*(?<id>\d+)\s*\[Rule\]\s*(?<rule>[^(\[)]+)\[Service\]\s*(?<service>[^(\[)]+)\s*\[User\]\s+(?<username>.*)\s+\[Connection\]\s*(?<connection_string>.*)\s+\[Iface\]\s*(?<interface>.*)\s+\[Duration\]\s*(?<duration>.*)\s+\[Bytes\]\s*(?<bytes>.*)\s+\[Packets\]\s*(?<packets>.*)\s+$
+
+
+
+
+
